@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: RememberWords
+
+  datasource:
+    url: jdbc:mysql://121.40.144.4:3306/english_word_database?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    username: english_word
+    password: Nls_040718yyds
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 857
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.example.rememberwords.entity
+
+Logging:
+  level:
+    com.example.rememberwords: debug

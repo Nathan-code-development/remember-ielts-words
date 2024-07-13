@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.rememberwords.mapper.WordLesson3Mapper">
+    <select id="findAll" resultType="com.example.rememberwords.entity.WordLesson3">
+        select * from speaking_and_listening_lesson3_word;
+    </select>
+
+    <select id="findOrderData" resultType="com.example.rememberwords.entity.WordLesson3">
+        select * from speaking_and_listening_lesson3_word limit #{pageNum}, #{pageSize}
+    </select>
+
+    <insert id="add" parameterType="com.example.rememberwords.entity.WordLesson3">
+        insert into speaking_and_listening_lesson3_word(word,mean)
+        values (#{word},#{mean});
+    </insert>
+
+    <update id="mod" parameterType="com.example.rememberwords.entity.WordLesson3">
+        update speaking_and_listening_lesson3_word set word=#{word},mean=#{mean}
+        where id=#{id};
+    </update>
+
+    <insert id="addOrMod" parameterType="com.example.rememberwords.entity.WordLesson3">
+        insert into speaking_and_listening_lesson3_word(id,word,mean)
+        values (#{id},#{word},#{mean})
+            on duplicate key update word=#{word},mean=#{mean};
+    </insert>
+
+    <delete id="delete" parameterType="com.example.rememberwords.entity.WordLesson3">
+        delete from speaking_and_listening_lesson3_word where id=#{id};
+    </delete>
+
+    <select id="likeFindAll" parameterType="com.example.rememberwords.entity.WordLesson3">
+        select * from speaking_and_listening_lesson3_word where mean like concat('%',#{mean},'%') limit #{pageNum}, #{pageSize};
+    </select>
+</mapper>
